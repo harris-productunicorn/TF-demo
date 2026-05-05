@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #1a0a2e;
+    color: #ffffff;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #061020; }
+  ::-webkit-scrollbar-thumb { background: #1AAFBF; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #17c4d6; }
+}

@@ -12,6 +12,9 @@ async function get(path, params = {}) {
   return json.data ?? json
 }
 
+export const apiFetch = (path) =>
+  fetch(`${BASE}${path}`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+
 export const api1  = (p) => get('/viz/program-overview',    p)
 export const api2  = (p) => get('/viz/applicant-engagement', p)
 export const api3  = (p) => get('/viz/week-over-week',       p)

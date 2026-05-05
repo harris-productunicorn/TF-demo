@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { fmtDate } from '../utils/fmtDate'
+import { apiFetch } from '../api/index'
 
 const BG     = '#0d1f2d'
 const BORDER = '#1a3a4a'
@@ -38,13 +39,15 @@ function buildQS(filters, page, page_size) {
     .join('&')
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'https://poppied-overclever-elisha.ngrok-free.dev'
+
 function buildExportURL(filters, format) {
   const p = { ...filters, format }
   const qs = Object.entries(p)
     .filter(([, v]) => v !== '' && v != null)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&')
-  return `/data/export?${qs}`
+  return `${API_BASE}/data/export?${qs}`
 }
 
 function ExportMenu({ filters }) {
@@ -144,7 +147,7 @@ export default function DataTable() {
   const PAGE_SIZE = 50
 
   useEffect(() => {
-    fetch('/data/filters').then(r => r.json()).then(setOpts).catch(() => {})
+    apiFetch('/data/filters').then(r => r.json()).then(setOpts).catch(() => {})
   }, [])
 
   function setFilter(key, val) {
@@ -156,7 +159,7 @@ export default function DataTable() {
     setLoading(true)
     setError(null)
     const qs = buildQS(filters, page, PAGE_SIZE)
-    fetch(`/data/table?${qs}`)
+    apiFetch(`/data/table?${qs}`)
       .then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json() })
       .then(d => { setRows(d.data || []); setTotal(d.total || 0); setPages(d.pages || 1) })
       .catch(e => setError(e.message))

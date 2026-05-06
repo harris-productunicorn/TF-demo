@@ -22,6 +22,7 @@ const COLUMNS = [
   { key: 'Call Outcome',        label: 'Call Outcome' },
   { key: 'Date',                label: 'Call Date' },
   { key: 'Source',              label: 'Source' },
+  { key: 'recruiter_name',      label: 'Recruiter Name' },
 ]
 
 const OUTCOME_COLOR = {

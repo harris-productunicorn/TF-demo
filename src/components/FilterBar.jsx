@@ -12,7 +12,7 @@ function DownloadMenu({ chartRef, filename = 'chart' }) {
     return () => document.removeEventListener('mousedown', handler)
   }, [open])
   return (
-    <div ref={menuRef} className="flex flex-col gap-1 relative">
+    <div ref={menuRef} className="hidden md:flex flex-col gap-1 relative">
       <button
         onClick={() => setOpen(o => !o)}
         className="rounded-lg px-3 text-sm font-medium"

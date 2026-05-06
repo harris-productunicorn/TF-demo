@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import { downloadChart } from '../utils/downloadChart'
 import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, LabelList, ResponsiveContainer,
 } from 'recharts'
 import { api3 } from '../api'
 import { YTD_MONTH_FILTERS } from '../utils/defaults'
-import FilterBar from '../components/FilterBar'
+import FilterBar, { DownloadMenu } from '../components/FilterBar'
 import Loader from '../components/Loader'
 
 const TEAL   = '#1AAFBF'
@@ -112,15 +111,7 @@ export default function WeekOverWeek() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-1">
-          <button
-            onClick={() => downloadChart(chartRef, 'week-over-week.png', 'png')}
-            className="rounded-lg px-3 text-sm font-medium"
-            style={{ background: '#1AAFBF', border: '1px solid #1AAFBF', color: '#061020', whiteSpace: 'nowrap', height: 36, boxSizing: 'border-box' }}
-          >
-            Export
-          </button>
-        </div>
+        <DownloadMenu chartRef={chartRef} filename="week-over-week" />
       </div>
 
       {loading && <Loader />}

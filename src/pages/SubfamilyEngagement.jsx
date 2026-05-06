@@ -1,11 +1,10 @@
-import { downloadChart } from '../utils/downloadChart'
 import { useState, useEffect, useMemo, useRef } from 'react'
 import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, LabelList, ResponsiveContainer,
 } from 'recharts'
 import { api6 } from '../api'
-import FilterBar from '../components/FilterBar'
+import FilterBar, { DownloadMenu } from '../components/FilterBar'
 import Loader from '../components/Loader'
 
 const MAGENTA = '#d946ef'
@@ -150,13 +149,7 @@ export default function SubfamilyEngagement() {
             </div>
           </div>
         </div>
-        <button
-          onClick={() => downloadChart(chartRef, 'subfamily-engagement.png', 'png')}
-          className="rounded-lg px-3 text-sm font-medium"
-          style={{ background: '#1AAFBF', border: '1px solid #1AAFBF', color: '#061020', whiteSpace: 'nowrap', height: 36, boxSizing: 'border-box' }}
-        >
-          Export
-        </button>
+        <DownloadMenu chartRef={chartRef} filename="subfamily-engagement" />
       </div>
 
       {loading && <Loader />}

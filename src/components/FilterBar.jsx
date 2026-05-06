@@ -46,6 +46,8 @@ function DownloadMenu({ chartRef, filename = 'chart' }) {
   )
 }
 
+export { DownloadMenu }
+
 export default function FilterBar({ filters, onChange, fields = ['start_date', 'end_date'], chartRef, downloadFilename, sectorOptions = [], className = '' }) {
   const input = 'rounded-lg px-3 py-2 text-sm outline-none focus:ring-1'
   const style = {

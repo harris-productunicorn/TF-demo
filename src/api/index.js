@@ -6,7 +6,7 @@ async function get(path, params = {}) {
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&')
   const url = qs ? `${BASE}${path}?${qs}` : `${BASE}${path}`
-  const res = await fetch(url)
+  const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
   const json = await res.json()
   return json.data ?? json

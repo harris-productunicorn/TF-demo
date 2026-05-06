@@ -78,6 +78,7 @@ export default function FilterBar({ filters, onChange, fields = ['start_date', '
             <label className="text-xs" style={{ color: '#7a9aaa' }}>End Date</label>
             <input type="date" className={input} style={{ ...style, ...focusStyle }}
               value={filters.end_date || ''}
+              min={filters.start_date || undefined}
               onChange={e => onChange({ ...filters, end_date: e.target.value })} />
           </div>
         )}
@@ -94,6 +95,7 @@ export default function FilterBar({ filters, onChange, fields = ['start_date', '
             <label className="text-xs" style={{ color: '#7a9aaa' }}>End Month</label>
             <input type="month" className={input} style={{ ...style, ...focusStyle }}
               value={filters.end_month || ''}
+              min={filters.start_month || undefined}
               onChange={e => onChange({ ...filters, end_month: e.target.value })} />
           </div>
         )}

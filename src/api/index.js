@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE_URL ?? 'https://poppied-overclever-elisha.ngrok-free.dev'
+const BASE = import.meta.env.VITE_API_BASE_URL ?? ''
 
 async function get(path, params = {}) {
   const qs = Object.entries(params)
@@ -6,7 +6,7 @@ async function get(path, params = {}) {
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
     .join('&')
   const url = qs ? `${BASE}${path}?${qs}` : `${BASE}${path}`
-  const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+  const res = await fetch(url)
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`)
   const json = await res.json()
   return json.data ?? json

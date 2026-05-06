@@ -3,6 +3,24 @@
   publish = "dist"
 
 [[redirects]]
+  from   = "/viz/*"
+  to     = "https://poppied-overclever-elisha.ngrok-free.dev/viz/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/data/*"
+  to     = "https://poppied-overclever-elisha.ngrok-free.dev/data/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/recruiter-upload/*"
+  to     = "https://poppied-overclever-elisha.ngrok-free.dev/recruiter-upload/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
   from   = "/*"
   to     = "/index.html"
   status = 200
